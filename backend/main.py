@@ -13,7 +13,7 @@ from services.graph_builder import GraphBuilder
 from models.schemas import AssetResponse, QueryRequest, QueryResponse
 
 # 加载配置
-with open("../config/config.yaml", "r") as f:
+with open("../config/config.yaml", "r", encoding="utf-8") as f:
     config = yaml.safe_load(f)
 
 # 全局变量

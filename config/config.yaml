@@ -7,7 +7,7 @@ janusgraph:
 # Kubernetes配置
 kubernetes:
   # Use kubeconfig file for cluster access
-  kubeconfig_path: E:\\Download\\config"
+  kubeconfig_path: "E:\\Download\\config"
   # Or use in-cluster configuration
   in_cluster: false
   
