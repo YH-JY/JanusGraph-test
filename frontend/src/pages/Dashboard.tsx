@@ -40,7 +40,7 @@ const Dashboard: React.FC = () => {
   const handleCollectAssets = async () => {
     try {
       setCollecting(true);
-      const result = await collectAssets();
+      await collectAssets();
       setMessage({ type: 'success', text: 'Assets collected successfully' });
       // Refresh stats after collection
       fetchData();

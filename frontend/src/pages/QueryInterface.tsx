@@ -9,6 +9,7 @@ import {
   Spin,
   Table,
   Tag,
+  List,
   message
 } from 'antd';
 import {
@@ -18,9 +19,9 @@ import {
   HistoryOutlined
 } from '@ant-design/icons';
 import { queryGraph } from '../services/api';
-import { QueryRequest, QueryResponse } from '../types';
+import { QueryRequest } from '../types';
 
-const { Title, Paragraph } = Typography;
+const { Title } = Typography;
 const { TextArea } = Input;
 
 const QueryInterface: React.FC = () => {
@@ -114,7 +115,7 @@ const QueryInterface: React.FC = () => {
 
   // Format results for display
   const formatResults = (data: any[]) => {
-    if (!data || data.length === 0) return [];
+    if (!data || data.length === 0) return null;
     
     // Handle different result types
     const firstItem = data[0];
@@ -229,7 +230,7 @@ const QueryInterface: React.FC = () => {
           <List
             size="small"
             dataSource={queryHistory}
-            renderItem={(item, index) => (
+            renderItem={(item: string, index: number) => (
               <List.Item
                 actions={[
                   <Button

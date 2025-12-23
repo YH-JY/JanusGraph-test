@@ -6,8 +6,7 @@ import {
   GraphData,
   AttackPath,
   HealthStatus,
-  GraphStats,
-  CollectionStatus
+  GraphStats
 } from '../types';
 
 // Create axios instance

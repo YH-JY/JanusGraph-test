@@ -23,13 +23,11 @@ export interface QueryResponse {
 }
 
 // Graph Visualization Types
-export interface GraphNode {
+export interface GraphNode extends d3.SimulationNodeDatum {
   id: string;
   label: string;
   type: string;
   properties: Record<string, any>;
-  x?: number;
-  y?: number;
   color?: string;
   size?: number;
 }

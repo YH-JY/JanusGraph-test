@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { 
   Card, 
   Button, 
-  Input, 
   Select, 
   Space, 
   Typography, 
@@ -10,7 +9,6 @@ import {
   Tag, 
   Alert, 
   Spin, 
-  Collapse,
   Timeline,
   Drawer,
   Descriptions,
@@ -19,7 +17,6 @@ import {
 import {
   SearchOutlined,
   ReloadOutlined,
-  EyeOutlined,
   SecurityScanOutlined
 } from '@ant-design/icons';
 import { getAttackPaths, getAssets } from '../services/api';
@@ -91,16 +88,6 @@ const AttackPaths: React.FC = () => {
     return colorMap[level] || '#d9d9d9';
   };
 
-  // Get risk level text color
-  const getRiskTextColor = (level: string): string => {
-    const colorMap: Record<string, string> = {
-      'LOW': '#52c41a',
-      'MEDIUM': '#fa8c16',
-      'HIGH': '#fa541c',
-      'CRITICAL': '#ff4d4f'
-    };
-    return colorMap[level] || '#666';
-  };
 
   // View path details
   const handleViewPathDetails = (path: AttackPath) => {
@@ -108,17 +95,7 @@ const AttackPaths: React.FC = () => {
     setDrawerVisible(true);
   };
 
-  // Calculate overall risk based on steps
-  const calculateOverallRisk = (steps: AttackStep[]): string => {
-    if (steps.length === 0) return 'LOW';
-    
-    const riskLevels = steps.map(s => s.risk_level);
-    
-    if (riskLevels.includes('CRITICAL')) return 'CRITICAL';
-    if (riskLevels.includes('HIGH')) return 'HIGH';
-    if (riskLevels.includes('MEDIUM')) return 'MEDIUM';
-    return 'LOW';
-  };
+
 
   // Initial data fetch
   useEffect(() => {

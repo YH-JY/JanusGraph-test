@@ -21,14 +21,12 @@ import {
   ZoomInOutlined,
   ZoomOutOutlined,
   ExpandOutlined,
-  EyeOutlined,
   SettingOutlined
 } from '@ant-design/icons';
 import { getGraphVisualizationData } from '../services/api';
 import { GraphNode, GraphEdge, GraphData } from '../types';
 
 const { Title } = Typography;
-const { Option } = Select;
 
 interface GraphVisualizationProps {}
 
@@ -226,7 +224,7 @@ const GraphVisualization: React.FC<GraphVisualizationProps> = () => {
       simulation.stop();
     };
 
-  }, [graphData, linkDistance, nodeStrength, showLabels, nodeSizeRange]);
+  }, [graphData, linkDistance, nodeStrength, showLabels, nodeSizeRange, graphData?.edges]);
 
   // Update visualization when settings change
   useEffect(() => {
