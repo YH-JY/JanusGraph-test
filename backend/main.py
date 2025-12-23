@@ -65,8 +65,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Serve static files
-app.mount("/static", StaticFiles(directory="../frontend/build"), name="static")
+# Serve static files (optional)
+frontend_build_path = "../frontend/build"
+if os.path.exists(frontend_build_path):
+    app.mount("/static", StaticFiles(directory=frontend_build_path), name="static")
 
 # API Routes
 
