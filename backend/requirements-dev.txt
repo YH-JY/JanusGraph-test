@@ -1,0 +1,28 @@
+# 开发环境依赖文件
+# 使用 pip install -r requirements-dev.txt
+
+# 基础依赖
+fastapi==0.109.2
+uvicorn[standard]==0.27.1
+pydantic==2.9.2
+pydantic-settings==2.2.0
+gremlinpython==3.7.1
+kubernetes==28.1.0
+PyYAML==6.0.1
+aiofiles==23.2.1
+python-multipart==0.0.6
+jinja2==3.1.2
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+asyncio-mqtt==0.16.1
+websockets==12.0
+aiohttp==3.9.1
+
+# 开发工具
+pytest==7.4.3
+pytest-asyncio==0.21.1
+black==23.11.0
+flake8==6.1.0
+mypy==1.7.1
+pre-commit==3.6.0
+httpx==0.25.2

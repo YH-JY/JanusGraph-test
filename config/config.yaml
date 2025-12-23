@@ -1,0 +1,39 @@
+# JanusGraph配置
+janusgraph:
+  host: "192.168.40.129"
+  port: 8182
+  graph_name: "k8s_assets"
+
+# Kubernetes配置
+kubernetes:
+  # Use kubeconfig file for cluster access
+  kubeconfig_path: E:\\Download\\config"
+  # Or use in-cluster configuration
+  in_cluster: false
+  
+# API配置
+api:
+  host: "0.0.0.0"
+  port: 8000
+  debug: true
+
+# 数据收集设置
+data_collection:
+  # 从k8s收集这些资源类型
+  resources:
+    - pods
+    - services
+    - deployments
+    - namespaces
+    - nodes
+    - ingress
+    - secrets
+    - configmaps
+    - roles
+    - rolebindings
+    - clusterroles
+    - clusterrolebindings
+    - serviceaccounts
+  
+  # 同步间隔（秒）
+  sync_interval: 300

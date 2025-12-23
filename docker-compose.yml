@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./config:/app/config
+      - ~/.kube:/root/.kube:ro  # Mount kubeconfig for K8s access
+    environment:
+      - PYTHONPATH=/app
+    depends_on:
+      - janusgraph
+    networks:
+      - janusgraph-network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - janusgraph-network
+
+  # External JanusGraph service - uncomment if you want to run JanusGraph in Docker
+  # janusgraph:
+  #   image: janusgraph/janusgraph:latest
+  #   ports:
+  #     - "8182:8182"
+  #   environment:
+  #     - JANUSGRAPH_STORAGE_BACKEND=berkeleyje
+  #     - JANUSGRAPH_STORAGE_DIRECTORY=/db
+  #   volumes:
+  #     - janusgraph-data:/db
+  #   networks:
+  #     - janusgraph-network
+
+networks:
+  janusgraph-network:
+    driver: bridge
+
+# volumes:
+#   janusgraph-data:
