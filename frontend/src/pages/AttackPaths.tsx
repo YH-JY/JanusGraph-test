@@ -12,7 +12,6 @@ import {
   Timeline,
   Drawer,
   Descriptions,
-  message
 } from 'antd';
 import {
   SearchOutlined,
@@ -20,7 +19,7 @@ import {
   SecurityScanOutlined
 } from '@ant-design/icons';
 import { getAttackPaths, getAssets } from '../services/api';
-import { AttackPath, AttackStep, Asset } from '../types';
+import { AttackPath, Asset } from '../types';
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -33,7 +32,6 @@ const AttackPaths: React.FC = () => {
   const [drawerVisible, setDrawerVisible] = useState(false);
   const [sourceAsset, setSourceAsset] = useState<string>('');
   const [targetAsset, setTargetAsset] = useState<string>('');
-  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
   // Fetch assets for selection
   const fetchAssets = async () => {
@@ -64,7 +62,6 @@ const AttackPaths: React.FC = () => {
         });
       }
     } catch (error: any) {
-      setMessage({ type: 'error', text: error.message || 'Failed to fetch attack paths' });
     } finally {
       setLoading(false);
     }
@@ -110,10 +107,7 @@ const AttackPaths: React.FC = () => {
         <SecurityScanOutlined /> Attack Path Analysis
       </Title>
 
-      {message && (
         <Alert
-          message={message.text}
-          type={message.type}
           showIcon
           closable
           onClose={() => setMessage(null)}
@@ -208,7 +202,6 @@ const AttackPaths: React.FC = () => {
           </div>
         ) : attackPaths.length === 0 ? (
           <Alert
-            message="No Attack Paths Found"
             description="Try adjusting your search criteria or ensure assets are collected in the graph."
             type="info"
             showIcon
@@ -319,7 +312,6 @@ const AttackPaths: React.FC = () => {
 
             {/* Attack Path Visualization Hint */}
             <Alert
-              message="Visualization Tip"
               description="You can view this attack path in the Graph Visualization page by selecting the source and target nodes."
               type="info"
               showIcon

@@ -4,7 +4,7 @@ import {
   Card, 
   Button, 
   Space, 
-  Select, 
+ 
   Slider, 
   Typography, 
   Spin, 
@@ -175,19 +175,19 @@ const GraphVisualization: React.FC<GraphVisualizationProps> = () => {
     simulation.on('tick', () => {
       links
         .attr('x1', d => {
-          const sourceNode = d.source as GraphNode;
+          const sourceNode = d.source as any;
           return sourceNode.x || 0;
         })
         .attr('y1', d => {
-          const sourceNode = d.source as GraphNode;
+          const sourceNode = d.source as any;
           return sourceNode.y || 0;
         })
         .attr('x2', d => {
-          const targetNode = d.target as GraphNode;
+          const targetNode = d.target as any;
           return targetNode.x || 0;
         })
         .attr('y2', d => {
-          const targetNode = d.target as GraphNode;
+          const targetNode = d.target as any;
           return targetNode.y || 0;
         });
 
